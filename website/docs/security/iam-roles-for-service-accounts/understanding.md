@@ -20,4 +20,4 @@ com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException: User: arn:aws:s
 
 Our application is generating an `AccessDeniedException` which indicates that the IAM Role our Pod is using to access DynamoDB does not have the required permissions. This is happening because our Pod is by default using the IAM Role assigned to the EC2 worker node on which its running, which does not have an IAM Policy that allows access to DynamoDB. 
 
-One way we could solve this is to expand the IAM permissions of our EC2 worker nodes, but this would allow any Pod that runs on them to access our DynamoDB table which is not a good practice, and also not secure. Instead we'll using IAM Roles for Service Accounts (IRSA) to specifically allow the Pods in our `carts` service access.
+One way we could solve this is to expand the IAM permissions of our EC2 worker nodes, but this would allow any Pod that runs on them to access our DynamoDB table which is not a good practice, and also not secure. Instead, we'll use IAM Roles for Service Accounts (IRSA) to specifically allow the Pods in our `carts` service access.
